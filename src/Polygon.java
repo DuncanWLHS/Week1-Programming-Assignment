@@ -3,7 +3,6 @@ public class Polygon {
     //Instance Variables
     private int numSides;
     private double sideLength;
-    private double polygonArea;
     private double polygonPerimeter;
     private String shapeType;
 
@@ -21,7 +20,6 @@ public class Polygon {
         this.numSides = numSides;
         this.sideLength = sideLength;
         this.shapeType = shapeType;
-
     }
 
     //Accessors and Mutators
@@ -32,7 +30,7 @@ public class Polygon {
         if (sideLength >= 0) {
             this.sideLength = sideLength;
         }else{
-            this.sideLength = 0.0;
+            this.sideLength = 1.0;
         }
     }
     public double getSideLength() {
@@ -73,13 +71,18 @@ public class Polygon {
     public String getShapeType(){
         return shapeType;
     }
+
+    //Other Methods
+    public double calculatePerimeter() {
+        return numSides*sideLength;
+    }
     public String toString() {
         if (this.numSides < 3 || this.sideLength < 0) {
          return "This is an invalid Polygon!";
         } else {
             return "Your shape is a " + shapeType + " and it has " + numSides + " sides.\n" +
                     "It has a side length of " + sideLength + "\n" +
-                    "It has a perimeter of 34.325 units.\n";
+                    "It has a perimeter of " + calculatePerimeter() + " units.\n";
         }
     }
 
