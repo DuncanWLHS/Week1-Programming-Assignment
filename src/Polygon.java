@@ -1,13 +1,31 @@
+/**
+ *
+ * @Date 02/04/2023
+ * @author Duncan Duffield
+ * @Description This is a class that creates a Polygon Object that can have modular sides, side lengths, and shape types.
+ *
+ */
+
 public class Polygon {
 
     //Instance Variables
     private int numSides;
+
     private double sideLength;
+
     private double polygonPerimeter;
+
     private String shapeType;
 
-
     //Default Polygon
+
+    /**
+     *
+     * @Description This is th default Polygon Object which returns a Polygon with 3 sides, a side length of 1,
+     * a perimeter of 3, and the name "triangle".
+     *
+     */
+
     public Polygon() {
         numSides = 3;
         sideLength = 1.0;
@@ -16,6 +34,16 @@ public class Polygon {
     }
 
     //Overloaded Polygon
+
+    /**
+     *
+     *@Description This is another Polygon Object that has parameter that can be defined by the user.
+     * @param numSides This dictates the number of sides the Polygon Object has.
+     * @param sideLength This dictates the side length the Polygon Object has.
+     * @param shapeType This dictates the name of the Polygon that is created.
+     *
+     */
+
     public Polygon(int numSides, double sideLength, String shapeType) {
         this.numSides = numSides;
         this.sideLength = sideLength;
@@ -23,59 +51,60 @@ public class Polygon {
     }
 
     //Accessors and Mutators
+
+    /**
+     *
+     * @return The number of sides a polygon has.
+     */
+
     public int getNumSides() {
         return numSides;
     }
-    public void setSideLength(double sideLength){
-        if (sideLength >= 0) {
-            this.sideLength = sideLength;
-        }else{
-            this.sideLength = 1.0;
-        }
-    }
+
+    /**
+     *
+     * @return The side length of the polygon.
+     */
+
     public double getSideLength() {
         return sideLength;
     }
-    public void setShapeType(String shapeType) {
 
-        if (numSides < 0) {
-            this.shapeType = "Invalid Number of Sides";
-        }
-        else if (numSides == 3) {
-            this.shapeType = "triangle";
-        }
-        else if (numSides == 4) {
-            this.shapeType = "Square";
-        }
-        else if (numSides == 5) {
-            this.shapeType = "Pentagon";
-        }
-        else if (numSides == 6) {
-            this.shapeType = "Hexagon";
-        }
-        else if (numSides == 7) {
-            this.shapeType = "Heptagon";
-        }
-        else if (numSides == 8) {
-            this.shapeType = "Octagon";
-        }
-        else if (numSides == 9) {
-            this.shapeType = "Nonagon";
-        }
-        else if (numSides == 10) {
-            this.shapeType = "Decagon";
-        }else{
-            this.shapeType = "Out of Scope";
-        }
-    }
+    /**
+     *
+     * @return the name of the polygon.
+     */
+
     public String getShapeType(){
         return shapeType;
     }
 
+    /**
+     *
+     * @return the perimeter of the polygon.
+     */
+
+    public double getPolygonPerimeter() {
+        return polygonPerimeter;
+    }
+
     //Other Methods
+
+    /**
+     *
+     * @return the calculated perimeter of the polygon.
+     */
+
     public double calculatePerimeter() {
         return numSides*sideLength;
     }
+
+    /**
+     *
+     * @return a print statement with all the information about the polygon, if there is an invalid attribute of the polygon then,
+     * the method would return an invalid statement.
+     */
+
     public String toString() {
         if (this.numSides < 3 || this.sideLength < 0) {
          return "This is an invalid Polygon!";

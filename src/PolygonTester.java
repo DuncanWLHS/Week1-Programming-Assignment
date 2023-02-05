@@ -1,10 +1,16 @@
+/**
+ * @Date 02/04/2023
+ * @author Duncan Duffield
+ * @Description This class generates polygon objects from the Polygon.java class.
+ */
+
 public class PolygonTester {
     public static void main(String[] args) {
-        System.out.println("\nThis is the output with 5 sides, side length of 6.865, and a name of square");
+        System.out.println("\nThis is the output with 4 sides, side length of 1, and a name of square.");
         Polygon poly = new Polygon(4,1,"square");
         System.out.println(poly);
 
-        System.out.println("\nThis is the output with 10 sides, side length of 1.0, and a name of decagon");
+        System.out.println("\nThis is the output with 10 sides, side length of 1.0, and a name of decagon.");
         Polygon poly1 = new Polygon(10,2,"decagon");
         System.out.println(poly1);
 
