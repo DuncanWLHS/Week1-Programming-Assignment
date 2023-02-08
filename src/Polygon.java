@@ -3,6 +3,7 @@
  * @Date 02/04/2023
  * @author Duncan Duffield
  * @Description This is a class that creates a Polygon Object that can have modular sides, side lengths, and shape types.
+ * @file Polygon.java
  *
  */
 
@@ -51,6 +52,30 @@ public class Polygon {
     }
 
     //Accessors and Mutators
+
+    /**
+     *
+     * @param newNumSides set numSides to a new value;
+     */
+    public void setNumSides(int newNumSides) {
+        numSides = newNumSides;
+    }
+
+    /**
+     *
+     * @param newSideLength sets sideLength to a new value
+     */
+    public void setSideLength(double newSideLength) {
+        sideLength = newSideLength;
+    }
+
+    /**
+     *
+     * @param newShapeType changes to name of the polygon.
+     */
+    public void setShapeType(String newShapeType) {
+        shapeType = newShapeType;
+    }
 
     /**
      *
