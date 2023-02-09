@@ -1,3 +1,4 @@
+import java.lang.Math;
 /**
  *
  * @Date 02/04/2023
@@ -21,28 +22,23 @@ public class Polygon {
     //Default Polygon
 
     /**
-     *
      * @Description This is th default Polygon Object which returns a Polygon with 3 sides, a side length of 1,
      * a perimeter of 3, and the name "triangle".
-     *
      */
 
     public Polygon() {
         numSides = 3;
         sideLength = 1.0;
-        polygonPerimeter = 3.0;
-        shapeType = "triangle";
+        shapeType = "Triangle";
     }
 
     //Overloaded Polygon
 
     /**
-     *
-     *@Description This is another Polygon Object that has parameter that can be defined by the user.
-     * @param numSides This dictates the number of sides the Polygon Object has.
+     * @param numSides   This dictates the number of sides the Polygon Object has.
      * @param sideLength This dictates the side length the Polygon Object has.
-     * @param shapeType This dictates the name of the Polygon that is created.
-     *
+     * @param shapeType  This dictates the name of the Polygon that is created.
+     * @Description This is another Polygon Object that has parameter that can be defined by the user.
      */
 
     public Polygon(int numSides, double sideLength, String shapeType) {
@@ -54,7 +50,6 @@ public class Polygon {
     //Accessors and Mutators
 
     /**
-     *
      * @param newNumSides set numSides to a new value;
      */
     public void setNumSides(int newNumSides) {
@@ -62,7 +57,6 @@ public class Polygon {
     }
 
     /**
-     *
      * @param newSideLength sets sideLength to a new value
      */
     public void setSideLength(double newSideLength) {
@@ -70,7 +64,6 @@ public class Polygon {
     }
 
     /**
-     *
      * @param newShapeType changes to name of the polygon.
      */
     public void setShapeType(String newShapeType) {
@@ -78,7 +71,6 @@ public class Polygon {
     }
 
     /**
-     *
      * @return The number of sides a polygon has.
      */
 
@@ -87,7 +79,6 @@ public class Polygon {
     }
 
     /**
-     *
      * @return The side length of the polygon.
      */
 
@@ -96,16 +87,14 @@ public class Polygon {
     }
 
     /**
-     *
      * @return the name of the polygon.
      */
 
-    public String getShapeType(){
+    public String getShapeType() {
         return shapeType;
     }
 
     /**
-     *
      * @return the perimeter of the polygon.
      */
 
@@ -116,28 +105,31 @@ public class Polygon {
     //Other Methods
 
     /**
-     *
      * @return the calculated perimeter of the polygon.
      */
 
     public double calculatePerimeter() {
-        return numSides*sideLength;
+        double perimeter = numSides * sideLength;
+        double roundedPerimeter = (Math.round(perimeter * 1000) / 1000.0);
+        return roundedPerimeter;
     }
 
     /**
-     *
      * @return a print statement with all the information about the polygon, if there is an invalid attribute of the polygon then,
      * the method would return an invalid statement.
      */
 
     public String toString() {
+
         if (this.numSides < 3 || this.sideLength < 0) {
-         return "This is an invalid Polygon!";
+            setShapeType("Triangle");
+            setNumSides(3);
+            setSideLength(1.0);
+            return "This is a invalid polygon, setting values to the default polygon.";
         } else {
             return "Your shape is a " + shapeType + " and it has " + numSides + " sides.\n" +
                     "It has a side length of " + sideLength + "\n" +
                     "It has a perimeter of " + calculatePerimeter() + " units.\n";
         }
     }
-
 }
