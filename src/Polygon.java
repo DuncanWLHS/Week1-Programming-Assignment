@@ -15,8 +15,6 @@ public class Polygon {
 
     private double sideLength;
 
-    private double polygonPerimeter;
-
     private String shapeType;
 
     //Default Polygon
@@ -42,9 +40,16 @@ public class Polygon {
      */
 
     public Polygon(int numSides, double sideLength, String shapeType) {
-        this.numSides = numSides;
-        this.sideLength = sideLength;
-        this.shapeType = shapeType;
+
+        if(numSides < 3 || sideLength < 1.0){
+            this.numSides = 3;
+            this.sideLength = 1.0;
+            this.shapeType = "Triangle";
+        }else{
+            this.numSides = numSides;
+            this.sideLength = sideLength;
+            this.shapeType = shapeType;
+        }
     }
 
     //Accessors and Mutators
@@ -53,21 +58,27 @@ public class Polygon {
      * @param newNumSides set numSides to a new value;
      */
     public void setNumSides(int newNumSides) {
-        numSides = newNumSides;
+        if (numSides <= 3) {
+            numSides = newNumSides;
+        }
     }
 
     /**
      * @param newSideLength sets sideLength to a new value
      */
     public void setSideLength(double newSideLength) {
-        sideLength = newSideLength;
+        if (newSideLength >= 0) {
+            sideLength = newSideLength;
+        }
     }
 
     /**
      * @param newShapeType changes to name of the polygon.
      */
-    public void setShapeType(String newShapeType) {
-        shapeType = newShapeType;
+    public void setShapeName(String newShapeType) {
+        if (shapeType != "invalid") {
+            shapeType = newShapeType;
+        }
     }
 
     /**
@@ -94,14 +105,6 @@ public class Polygon {
         return shapeType;
     }
 
-    /**
-     * @return the perimeter of the polygon.
-     */
-
-    public double getPolygonPerimeter() {
-        return polygonPerimeter;
-    }
-
     //Other Methods
 
     /**
@@ -115,21 +118,34 @@ public class Polygon {
     }
 
     /**
+     * @return the calculated area of the polygon.
+     */
+
+    public double getArea() {
+        double area = (numSides * (sideLength * sideLength)) / (4.0 * Math.tan((Math.PI / numSides)));
+        return Math.round(area*1000)/1000.0;
+    }
+
+
+    /**
+     * @return the calculated area of the polygon.
+     */
+
+    public double calculateArea() {
+        double area = (numSides * (sideLength * sideLength)) / (4.0 * Math.tan((Math.PI / numSides)));
+        return Math.round(area*1000)/1000.0;
+    }
+
+    /**
      * @return a print statement with all the information about the polygon, if there is an invalid attribute of the polygon then,
      * the method would return an invalid statement.
      */
 
     public String toString() {
 
-        if (this.numSides < 3 || this.sideLength < 0) {
-            setShapeType("Triangle");
-            setNumSides(3);
-            setSideLength(1.0);
-            return "This is a invalid polygon, setting values to the default polygon.";
-        } else {
             return "Your shape is a " + shapeType + " and it has " + numSides + " sides.\n" +
                     "It has a side length of " + sideLength + "\n" +
-                    "It has a perimeter of " + calculatePerimeter() + " units.\n";
+                    "It has a perimeter of " + calculatePerimeter() + " units.\n" +
+                    "It has a area of " + calculateArea() + " units.\n";
         }
-    }
 }
